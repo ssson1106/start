@@ -19,6 +19,17 @@
       alert('asdf'  );
   // jQuery methods go here...
 
-});
+    });
+
+    function includeLayout(){
+    	var includeArea = $('[include-html]');
+    	var self, url;
+    	$.each(includeArea, function() {
+    		self = $(this);
+    		url = self.data("include");
+    		self.load(url, function() { self.removeAttr("include-html"); });
+    	});
+    }
+
   </script>
 </html>
