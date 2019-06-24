@@ -14,6 +14,10 @@
 		xsmall: '(max-width: 480px)'
 	});
 
+	$(function(){
+		includeLayout();
+	});
+
 	$(function() {
 
 		var	$window = $(window),
@@ -102,3 +106,13 @@
 	});
 
 })(jQuery);
+
+function includeLayout(){
+	var includeArea = $('[include-html]');
+	var self, url;
+	$.each(includeArea, function() {
+		self = $(this);
+		url = self.data("include");
+		self.load(url, function() { self.removeAttr("include-html"); });
+	});
+}
